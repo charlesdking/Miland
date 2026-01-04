@@ -1,21 +1,26 @@
 //
 //  ContentView.swift
-//  Miland
+//  Nents
 //
-//  Created by Charles King on 1/3/26.
+//  Created by Charles King on 12/21/25.
 //
 
 import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+    // MARK: Simple List
+    // Uncomment to show a simple list example
+
+    let items = ["Eggs", "Chicken", "Broccoli", "Potatoes"]
+        
+        VStack(alignment: .leading) {
+        Text("Simple List")
+            .font(.headline)
+        ForEach(items, id: \.self) { item in
+            Text(item)
+            }
+        }.padding()
     }
 }
 
