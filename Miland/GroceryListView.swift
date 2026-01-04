@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 struct GroceryListView: View {
     @State private var items: [GroceryItem] = [
         GroceryItem(id: UUID(), name: "Eggs"),
@@ -18,7 +17,11 @@ struct GroceryListView: View {
     var body: some View {
         NavigationStack {
             List(items) { item in
-                Text(item.name)
+                NavigationLink {
+                    GroceryDetailView(item: item)
+                } label: {
+                    GroceryRow(item: item)
+                }
             }
             .navigationTitle("Groceries")
         }
