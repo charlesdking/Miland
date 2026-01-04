@@ -9,11 +9,12 @@ import SwiftUI
 
 
 struct GroceryDetailView: View {
-    let item: GroceryItem
+    @Binding var item: GroceryItem
 
     var body: some View {
-        Text(item.name)
-            .font(.largeTitle)
-            .navigationTitle("Details")
+        Form {
+            TextField("Item name", text: $item.name)
+        }
+        .navigationTitle("Edit Item")
     }
 }

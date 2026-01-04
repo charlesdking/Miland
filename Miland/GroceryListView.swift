@@ -18,9 +18,9 @@ struct GroceryListView: View {
     
     var body: some View {
         NavigationStack {
-            List(items) { item in
+            List($items) { $item in
                 NavigationLink {
-                    GroceryDetailView(item: item)
+                    GroceryDetailView(item: $item)
                 } label: {
                     GroceryRow(item: item)
                 }
