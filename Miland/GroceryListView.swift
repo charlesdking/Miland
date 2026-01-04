@@ -14,6 +14,8 @@ struct GroceryListView: View {
         GroceryItem(id: UUID(), name: "Broccoli")
     ]
 
+    @State private var showAddItem = false
+    
     var body: some View {
         NavigationStack {
             List(items) { item in
@@ -24,6 +26,18 @@ struct GroceryListView: View {
                 }
             }
             .navigationTitle("Groceries")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showAddItem = true
+                    } label: {
+                        Image(systemName: "plus")
+                    }
+                }
+            }
+            .sheet(isPresented: $showAddItem) {
+                AddItemView(items: $items)
+            }
         }
     }
 }
